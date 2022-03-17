@@ -1,0 +1,56 @@
+/**
+ * SPDX-License-Identifier: BSD-3-Clause
+ *
+ * Copyright (c), 2022, Analog Devices, Inc.
+ */
+#ifndef PLATFORM_DEF_H
+#define PLATFORM_DEF_H
+
+#include <arch.h>
+
+#define PLATFORM_LINKER_FORMAT		"elf64-littleaarch64"
+#define PLATFORM_LINKER_ARCH		aarch64
+
+#define PLATFORM_STACK_SIZE 0x800
+#define DATA_ALIGN 4
+
+#define PLAT_PRIMARY_CPU	U(0)
+#define PLATFORM_CLUSTER_COUNT U(1)
+#define PLATFORM_CORE_COUNT	U(1)
+#define PLATFORM_CLUSTER0_CORE_COUNT U(1)
+#define PLAT_NUM_PWR_DOMAINS U(2)
+
+// @todo review power levels and states
+#define PLAT_MAX_PWR_LVL	U(1)
+#define PLAT_MAX_RET_STATE	U(1)
+#define PLAT_MAX_OFF_STATE	U(2)
+
+#define PLAT_VIRT_ADDR_SPACE_SIZE	(1ull << 32)
+#define PLAT_PHY_ADDR_SPACE_SIZE	(1ull << 32)
+
+#define CACHE_WRITEBACK_GRANULE 64
+
+#define BL31_BASE			0x9f800000
+#define BL31_LIMIT			0x9f850000
+
+#define BL32_BASE			0x9f000000
+#define BL33_BASE			0x96000000
+
+#define MAX_XLAT_TABLES		8
+#define MAX_MMAP_REGIONS	16
+
+#define ADSP_SC598_GICD_BASE 0x31200000
+#define ADSP_SC598_GICR_BASE 0x31240000
+#define ADSP_SC598_GIC_SIZE 0x80000
+
+#define ADSP_SC598_TIMESTAMP_BASE 0x310ae000
+#define ADSP_SC598_SPU0_SECUREC0 0x3108B980
+#define ADSP_SC598_SPU0_SECUREC1 0x3108B984
+#define ADSP_SC598_SPU0_SECUREC2 0x3108B988
+
+#define ADSP_SC598_UART0_BASE 0x31003000
+#define ADSP_SC598_UART_SIZE 0x1000
+
+#define COUNTER_FREQUENCY 31250000
+
+#endif
