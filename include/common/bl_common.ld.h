@@ -121,6 +121,7 @@
 	.data . : ALIGN(DATA_ALIGN) {			\
 		__DATA_START__ = .;			\
 		*(SORT_BY_ALIGNMENT(.data*))		\
+		. = ALIGN(DATA_ALIGN); \
 		__DATA_END__ = .;			\
 	}
 
