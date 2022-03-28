@@ -30,10 +30,10 @@
 
 #define CACHE_WRITEBACK_GRANULE 64
 
-#define BL31_BASE			0x9f800000
-#define BL31_LIMIT			0x9f850000
+#define BL31_BASE			0x9ff00000
+#define BL31_LIMIT			0xa0000000
 
-#define BL32_BASE			0x9f000000
+#define BL32_BASE			0x9ef00000
 #define BL33_BASE			0x96000000
 
 #define MAX_XLAT_TABLES		8
