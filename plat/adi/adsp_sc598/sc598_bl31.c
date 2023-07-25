@@ -22,11 +22,6 @@
 // @todo this forward declaration is no good--see about moving gic disable to uboot
 void gicv3_rdistif_mark_core_asleep(uintptr_t gicr_base);
 
-/**
- * @todo list:
- * - Need trustzone access controller configuration
- */
-
 unsigned int plat_gic_mpidr_to_core_pos(unsigned long mpidr);
 
 static console_t console;
@@ -144,8 +139,6 @@ void bl31_early_platform_setup2(u_register_t arg0, u_register_t arg1,
 	mmio_write_32(ADSP_SC598_SPU0_SECUREC0, 0);
 	mmio_write_32(ADSP_SC598_SPU0_SECUREC1, 0);
 	mmio_write_32(ADSP_SC598_SPU0_SECUREC2, 0);
-
-	// @todo tzasc configuration here if appropriate
 }
 
 void bl31_plat_arch_setup(void) {
