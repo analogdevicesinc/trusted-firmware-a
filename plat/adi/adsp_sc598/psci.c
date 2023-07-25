@@ -7,7 +7,11 @@
 #include <arch.h>
 #include <lib/psci/psci.h>
 
-static const plat_psci_ops_t adsp_sc598_psci_ops = { 0 };
+void __dead2 adsp_sc598_rcu_reset(void);
+
+static const plat_psci_ops_t adsp_sc598_psci_ops = {
+	.system_reset = adsp_sc598_rcu_reset,
+};
 
 /**
  * For now we support no power management operations

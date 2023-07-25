@@ -36,6 +36,8 @@ static const mmap_region_t sc598_mmap[] = {
 		MT_DEVICE | MT_RW | MT_SECURE),
 	MAP_REGION_FLAT(ADSP_SC598_UART0_BASE, ADSP_SC598_UART_SIZE,
 		MT_DEVICE | MT_RW | MT_SECURE),
+	MAP_REGION_FLAT(ADSP_SC598_RCU_BASE, ADSP_SC598_RCU_BASE,
+		MT_DEVICE | MT_RW | MT_SECURE),
 	{0},
 };
 
@@ -178,4 +180,12 @@ entry_point_info_t *bl31_plat_get_next_image_ep_info(unsigned int type) {
 unsigned int plat_get_syscnt_freq2(void)
 {
 	return COUNTER_FREQUENCY;
+}
+
+void __dead2 adsp_sc598_rcu_reset(void) {
+	uint32_t val = mmio_read_32(ADSP_SC598_RCU_BASE + ADI_RCU_REG_CTL);
+	mmio_write_32(ADSP_SC598_RCU_BASE + ADI_RCU_REG_CTL, val | ADI_RCU_CTL_SYSRST);
+
+	while (1)
+		;
 }
