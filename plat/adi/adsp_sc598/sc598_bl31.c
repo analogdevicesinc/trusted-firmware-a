@@ -175,9 +175,23 @@ unsigned int plat_get_syscnt_freq2(void)
 	return COUNTER_FREQUENCY;
 }
 
+/**
+ * Reboot the system by asserting sysreset which will lead to a reboot
+ */
 void __dead2 adsp_sc598_rcu_reset(void) {
 	uint32_t val = mmio_read_32(ADSP_SC598_RCU_BASE + ADI_RCU_REG_CTL);
 	mmio_write_32(ADSP_SC598_RCU_BASE + ADI_RCU_REG_CTL, val | ADI_RCU_CTL_SYSRST);
+
+	while (1)
+		;
+}
+
+/**
+ * Turn off by putting the ARM core into reset
+ */
+void __dead2 adsp_sc598_rcu_off(void) {
+	uint32_t val = mmio_read_32(ADSP_SC598_RCU_BASE + ADI_RCU_REG_CRCTL);
+	mmio_write_32(ADSP_SC598_RCU_BASE + ADI_RCU_REG_CRCTL, val | 1);
 
 	while (1)
 		;
