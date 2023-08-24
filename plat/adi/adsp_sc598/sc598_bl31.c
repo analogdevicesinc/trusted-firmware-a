@@ -134,11 +134,6 @@ void bl31_early_platform_setup2(u_register_t arg0, u_register_t arg1,
 
 	// Enable coresight timer
 	mmio_write_32(ADSP_SC598_TIMESTAMP_BASE, 1);
-
-	// disable secure-only access to sharc cores so we can load from EL1
-	mmio_write_32(ADSP_SC598_SPU0_SECUREC0, 0);
-	mmio_write_32(ADSP_SC598_SPU0_SECUREC1, 0);
-	mmio_write_32(ADSP_SC598_SPU0_SECUREC2, 0);
 }
 
 void bl31_plat_arch_setup(void) {
