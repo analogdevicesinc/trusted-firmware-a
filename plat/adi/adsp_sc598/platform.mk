@@ -12,6 +12,8 @@ PROGRAMMABLE_RESET_ADDRESS := 0
 ERRATA_A55_1530923 := 1
 GICV3_SUPPORT_GIC600 := 1
 EL3_EXCEPTION_HANDLING := 1
+ENABLE_CONSOLE_GETC := 1
+INIT_UNUSED_NS_EL2 := 1
 
 # Debug configuration to change later
 CRASH_REPORTING := 1
@@ -39,4 +41,3 @@ BL31_SOURCES += common/desc_image_load.c \
                 plat/common/plat_gicv3.c \
                 plat/common/plat_psci_common.c \
                 ${XLAT_TABLES_LIB_SRCS}
-
