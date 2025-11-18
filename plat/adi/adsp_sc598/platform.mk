@@ -15,9 +15,13 @@ EL3_EXCEPTION_HANDLING := 1
 ENABLE_CONSOLE_GETC := 1
 INIT_UNUSED_NS_EL2 := 1
 
+# Enable platform-specific linker script for data section alignment
+$(eval $(call add_define,PLAT_EXTRA_LD_SCRIPT))
+
 # Build file specifications
 PLAT_INCLUDES := -Iinclude/plat/common \
                  -Iplat/adi/adsp_sc598 \
+                 -Iplat/adi/adsp_sc598/include \
                  -Iplat/adi
 
 include drivers/arm/gic/v3/gicv3.mk
