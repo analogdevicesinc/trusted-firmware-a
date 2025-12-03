@@ -30,6 +30,13 @@ void __dead2 adsp_sc598_rcu_off(void) {
 		;
 }
 
+void plat_soft_reset(void){
+	adsp_sc598_rcu_reset();
+
+	while(1)
+		;
+}
+
 static const plat_psci_ops_t adsp_sc598_psci_ops = {
 	.system_off = adsp_sc598_rcu_off,
 	.system_reset = adsp_sc598_rcu_reset,
