@@ -15,6 +15,7 @@
 .globl plat_crash_console_init
 .globl plat_crash_console_putc
 .globl plat_crash_console_flush
+.globl plat_panic_handler
 
 	/**
 	* Console is already initialized with crash mode
@@ -48,3 +49,19 @@ endfunc plat_crash_console_putc
 func plat_crash_console_flush
 	ret
 endfunc plat_crash_console_flush
+
+	/* ---------------------------------------------
+	 * void plat_panic_handler (void) __dead2;
+	 *
+	 * Call system reset function on panic.
+	 * Set up an emergency stack to run C functions
+	 *
+	 * Call function to perform reset
+	 * Endless loop
+	 * ---------------------------------------------
+	 */
+func plat_panic_handler
+	msr	spsel, #0
+	bl plat_set_my_stack
+	b plat_soft_reset
+endfunc plat_panic_handler
